@@ -1,0 +1,144 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.das.wpu",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "WPU"
+  },
+  "description": {
+    "en": "Adds support for communicating with a WPU."
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Tom Pijl",
+    "email": "dutch.arrow53@gmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Tom Pijl"
+      }
+    ]
+  },
+  "brandColor": "#4a90e2",
+  "flow": {
+    "triggers": [
+      {
+        "id": "data-offered_changed",
+        "title": {
+          "en": "WPU offers data",
+          "nl": "WPU aanbod"
+        },
+        "tokens": [
+          {
+            "name": "data-offered",
+            "type": "string",
+            "title": {
+              "en": "Data offered",
+              "nl": "Aangeboden data"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=wpu"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "wpu"
+      },
+      "class": "socket",
+      "capabilities": [
+        "data-offered"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/wpu/assets/images/small.png",
+        "large": "/drivers/wpu/assets/images/large.png",
+        "xlarge": "/drivers/wpu/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "enter_device_data"
+        },
+        {
+          "id": "add_my_device",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "General settings",
+            "nl": "Algemene settings"
+          },
+          "children": [
+            {
+              "id": "url",
+              "type": "text",
+              "label": {
+                "en": "URL of WPU device",
+                "nl": "URL van WPU device"
+              },
+              "hint": {
+                "en": "Enter the URL of your WPU",
+                "nl": "Vul de URL van jouw WPU in"
+              }
+            },
+            {
+              "id": "period",
+              "type": "number",
+              "label": {
+                "en": "Frequency (minutes)",
+                "nl": "Frekwentie (minutes)"
+              },
+              "hint": {
+                "en": "The data will be offered every x minutes",
+                "nl": "Het aanbod wordt elke x minuten gedaan"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "wpu"
+    }
+  ],
+  "capabilities": {
+    "data-offered": {
+      "type": "string",
+      "title": {
+        "en": "Data offered",
+        "nl": "Aangeboden data"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null
+    }
+  }
+}

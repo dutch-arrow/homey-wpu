@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "title": "Data Server Settings Page"
+  },
+  "pair": {
+    "title": "Data Server Settings Page",
+    "devicename": "Name of the device",
+    "url": "URL of data server",
+    "period": "Frequency (minutes)",
+    "save": "Create device",
+    "invalid_device_name": "Device name is requiredt",
+    "missing_url": "URL of Data Server is required"
+  }
+}

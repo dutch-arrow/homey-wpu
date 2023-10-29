@@ -1,0 +1,36 @@
+{
+  "id": "nl.das.wpu",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "WPU"
+  },
+  "description": {
+    "en": "Adds support for communicating with a WPU."
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Tom Pijl",
+    "email": "dutch.arrow53@gmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Tom Pijl"
+      }
+    ]
+  },
+  "brandColor": "#4a90e2"
+}

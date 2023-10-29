@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "title": "Data Server Configuratie"
+  },
+  "pair": {
+    "title": "Data Server Configuratie",
+    "devicename": "Apparaat naam",
+    "url": "URL van de data server",
+    "period": "Frekwentie (minuten)",
+    "save": "Maak apparaat",
+    "invalid_device_name": "Apparaat naam is verplicht",
+    "missing_url": "URL van de Data Server is verplicht"
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- The '/homey.js' script must be included in your settings view to work -->
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+  </head>
+  <body>
+    <header class="homey-header">
+      <h1 class="homey-title" data-i18n="settings.title"></h1>
+      <p class="homey-subtitle" data-i18n="Deze pagina is zelf gemaakt!">
+        <!-- This field will also be translated -->
+      </p>
+    </header>
+
+    <fieldset class="homey-form-fieldset">
+      <legend class="homey-form-legend">Server Settings</legend>
+
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="url">URL of listener</label>
+        <input class="homey-form-input" id="url" type="text" value="" />
+      </div>
+    </fieldset>
+
+    <button id="save" class="homey-button-primary-full">Save changes</button>
+
+    <script type="text/javascript">
+
+      function onHomeyReady(Homey) {
+        console.log("Zelfgemaakte Settings pagina");
+ 
+        var urlElement = document.getElementById("url");
+        var saveElement = document.getElementById("save");
+
+        Homey.get("url", function (err, url) {
+          if (err) return Homey.alert(err);
+          urlElement.value = url;
+        });
+
+        saveElement.addEventListener("click", function (e) {
+          Homey.set("url", urlElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+        });
+        // Tell Homey we're ready to be displayed
+        Homey.ready();
+      }
+    </script>
+  </body>
+</html>

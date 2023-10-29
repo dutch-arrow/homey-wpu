@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <header class="homey-header">
+      <h1 class="homey-title" data-i18n="pair.title"></h1>
+    </header>
+    <form class="homey-form">
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="devicename"><span data-i18n="pair.devicename"></span></label>
+        <input class="homey-form-input" id="devicename" type="text" value=""/>
+      </div>
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="url"><span data-i18n="pair.url"></span></label>
+        <input class="homey-form-input" id="url" type="text" placeholder="http://[IP address]:[port](/[path])?" value="http://192.168.1.211/api.html?get=ithostatus"/>
+      </div>
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="period"><span data-i18n="pair.period"></span></label>
+        <input class="homey-form-input" id="period" type="number" placeholder=1 value=1/>
+      </div>
+      <button class="homey-button-primary" id="add_device"><span data-i18n="pair.save"></span>
+      </button>
+    </form>
+    <script type="application/javascript">
+      document.getElementById('add_device').onclick = (e) => {
+        e.preventDefault();
+        const devicename = document.getElementById("devicename").value;
+        const url = document.getElementById("url").value;
+        const period = document.getElementById("period").value;
+
+        Homey.emit('device_input', { devicename, url, period }, (err, result) => {
+          Homey.hideLoadingOverlay();
+
+          if (err) {
+            Homey.alert(err, 'error', () => { });
+          } else {
+            const newDevice = {
+              name: devicename,
+              data: {
+                id: "DS" + Date.now()
+              },
+              settings: {
+                url: url,
+                period: period
+              }
+            };
+            Homey.setViewStoreValue('add_my_device', 'devices', [newDevice], (err, data) => {
+              // Show the template view that will create the device
+              Homey.showView('add_my_device');
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
