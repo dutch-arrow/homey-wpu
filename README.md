@@ -1,3 +1,5 @@
+See [Welcome to the Apps SDK documentation](https://apps.developer.homey.app/)
+
 # WPU device implementation
 
 Reads data from Itho WPU at predefined periods and sends it to Homey.
